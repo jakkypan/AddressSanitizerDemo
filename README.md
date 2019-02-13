@@ -2,7 +2,20 @@
 
 AddressSanitizer native memory check demo
 
-```json
+AddressSanitizer可以完成如下工作：
+
+* Use after free，使用已释放的内存；
+* Heap buffer overflow，使用超出了申请空间的堆内存；
+* Stack buffer overflow，使用超出了申请空间的栈内存；
+* Global buffer overflow，使用超出了全局空间内存；
+* Use after return，使用在函数内部分配但已跳出函数的内存；
+* Use after scope，使用了超出作用域的内存；
+* Initialization order bugs，一些和变量初始化有关的问题；
+* Memory Leaks，内存泄漏(android上不支持)。
+
+运行的效果：
+
+```txt
 9-02-13 20:01:48.197 25077-25077/? I/wrap.sh: [1m[31m==25083==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x00310002a790 at pc 0x0077f45e5b64 bp 0x007fc758a630 sp 0x007fc758a628
 2019-02-13 20:01:48.197 25077-25077/? I/wrap.sh: [1m[0m[1m[34mWRITE of size 4 at 0x00310002a790 thread T0 (com.panda.asam)[1m[0m
 2019-02-13 20:01:48.225 25077-25077/? I/wrap.sh:     #0 0x77f45e5b63  (/data/app/com.panda.asam-aa9WIA8AYlzCvuGKb0LoJQ==/lib/arm64/libnative-lib.so+0x1b63)
